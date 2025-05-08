@@ -43,23 +43,27 @@
       color: #000;
     }
 
+    /* Smaller Code Container */
     #code-container {
       display: none;
       margin-top: 20px;
-      max-width: 90%;
+      width: 80%;
       margin-left: auto;
       margin-right: auto;
-      padding: 15px;
+      padding: 10px;
       background: #222;
       border: 1px solid #444;
-      overflow-y: scroll;
-      max-height: 500px;
+      max-height: 300px; /* Reduced height */
+      overflow: auto; /* Allows scrolling if necessary, but reduced space */
+      font-size: 0.8em; /* Smaller text size */
+      white-space: pre-wrap; /* Allows long lines to wrap */
+      word-wrap: break-word; /* Prevents breaking words in a bad way */
     }
 
     pre {
-      white-space: pre-wrap;
-      word-wrap: break-word;
       color: #0ff;
+      margin: 0;
+      padding: 0;
     }
   </style>
 </head>
