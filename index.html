@@ -2,97 +2,215 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>yourname.lol</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cloud Scripts</title>
   <style>
     body {
-      background: #000;
-      color: #fff;
       font-family: 'Courier New', Courier, monospace;
+      background: #121212;
+      color: #fff;
       text-align: center;
-      padding: 60px 20px;
+      padding: 20px;
     }
+
     h1 {
-      font-size: 3em;
-      margin-bottom: 10px;
       background: linear-gradient(90deg, #f0f, #0ff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      font-size: 2.5em;
+      margin-bottom: 20px;
     }
-    p {
-      margin: 10px 0;
+
+    #tab-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .tab-button {
+      background: #333;
+      color: #fff;
+      padding: 15px 25px;
+      margin: 5px;
+      border: none;
       font-size: 1.2em;
+      cursor: pointer;
+      border-radius: 5px;
     }
-    a {
-      color: #0ff;
-      text-decoration: none;
-      font-weight: bold;
+
+    .tab-button:hover {
+      background: #0ff;
+      color: #000;
     }
-    a:hover {
-      color: #f0f;
-      text-shadow: 0 0 5px #f0f;
-    }
-    .links {
-      margin-top: 30px;
-    }
-    .links a {
-      display: block;
-      margin: 10px 0;
-    }
-    #upload-container {
-      margin-top: 30px;
-    }
-    #file-content {
+
+    #code-container {
+      display: none;
       margin-top: 20px;
-      padding: 10px;
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 15px;
       background: #222;
       border: 1px solid #444;
-      color: #0ff;
+      overflow-y: scroll;
+      max-height: 500px;
+    }
+
+    pre {
       white-space: pre-wrap;
       word-wrap: break-word;
-      max-height: 300px;
-      overflow-y: auto;
+      color: #0ff;
     }
   </style>
 </head>
 <body>
-  <h1>yourname.lol</h1>
-  <p>welcome to my internet cave 😈</p>
 
-  <div class="links">
-    <a href="https://github.com/yourusername" target="_blank">GitHub</a>
-    <a href="https://twitter.com/yourusername" target="_blank">Twitter</a>
-    <a href="https://discord.gg/yourserver" target="_blank">Discord</a>
-    <a href="https://yourcoollink.com" target="_blank">My Site</a>
+  <h1>Cloud Scripts</h1>
+
+  <!-- Tab Button -->
+  <div id="tab-container">
+    <button class="tab-button" onclick="showCode()">Anti PCVR</button>
   </div>
 
-  <!-- File Upload Section -->
-  <div id="upload-container">
-    <h2>Upload your code file:</h2>
-    <input type="file" id="fileInput" />
-    <button onclick="uploadFile()">Upload File</button>
-  </div>
+  <!-- Code Container -->
+  <div id="code-container">
+    <pre>
+handlers.AntiPCVR = function(args, context) {
+    var ps = context.playStreamEvent;
+    var dm = ps.DeviceInfo.DeviceModel;
+    var pf = ps.DeviceInfo.Platform;
+    var dt = ps.DeviceInfo.DeviceType;
+    var pn = ps.DeviceInfo.ProductBundle;
+    var id = context.playerProfile.PlayerId;
+    var cidd = server.GetUserAccountInfo({
+        PlayFabId: currentPlayerId
+    }).UserInfo.CustomIdInfo.CustomId;
 
-  <!-- Area to display the uploaded code -->
-  <div id="file-content"></div>
+    if (dm == "Oculus Quest") {
+        if (pf == "Android") {
+            if (dt == "Handheld") {
+                log.debug("hi normal feller")
+            } else {
+                server.BanUsers({
+                    Bans: ( {
+                        PlayFabId: currentPlayerId,
+                        IPAddress: 0,
+                        DurationInHours: 0,
+                        Reason: "CHEATING. USING AN INVALID DEVICE TYPE. DISCORD.GG/GTAG."
+                    })
+                });
+                server.DeletePlayer({PlayFabId: currentPlayerId});
+            }
+        } else {
+            server.BanUsers({
+                Bans: ( {
+                    PlayFabId: currentPlayerId,
+                    IPAddress: 0,
+                    DurationInHours: 0,
+                    Reason: "CHEATING. USING AN INVALID DEVICE TYPE. DISCORD.GG/GTAG."
+                })
+            });
+            server.DeletePlayer({PlayFabId: currentPlayerId});
+        }
+    } else {
+        server.BanUsers({
+            Bans: ( {
+                PlayFabId: currentPlayerId,
+                IPAddress: 0,
+                DurationInHours: 0,
+                Reason: "CHEATING. USING AN INVALID DEVICE TYPE. DISCORD.GG/GTAG."
+            })
+        });
+        server.DeletePlayer({PlayFabId: currentPlayerId});
+    }
+    if (pn == null) {
+        server.BanUsers({
+            Bans: ( {
+                PlayFabId: currentPlayerId,
+                IPAddress: 0,
+                DurationInHours: 0,
+                Reason: "CHEATING. USING AN INVALID DEVICE TYPE. DISCORD.GG/GTAG."
+            })
+        });
+        server.DeletePlayer({PlayFabId: currentPlayerId});
+    }
+    if (dm == null) {
+        server.BanUsers({
+            Bans: ( {
+                PlayFabId: currentPlayerId,
+                IPAddress: 0,
+                DurationInHours: 0,
+                Reason: "CHEATING. USING AN INVALID DEVICE TYPE. DISCORD.GG/GTAG."
+            })
+        });
+        server.DeletePlayer({PlayFabId: currentPlayerId});
+    }
+    if (pf == null) {
+        server.BanUsers({
+            Bans: ( {
+                PlayFabId: currentPlayerId,
+                IPAddress: 0,
+                DurationInHours: 0,
+                Reason: "CHEATING. USING AN INVALID DEVICE TYPE. DISCORD.GG/GTAG."
+            })
+        });
+        server.DeletePlayer({PlayFabId: currentPlayerId});
+    }
+    if (dt == null) {
+        server.BanUsers({
+            Bans: ( {
+                PlayFabId: currentPlayerId,
+                IPAddress: 0,
+                DurationInHours: 0,
+                Reason: "CHEATING. USING AN INVALID DEVICE TYPE. DISCORD.GG/GTAG."
+            })
+        });
+        server.DeletePlayer({PlayFabId: currentPlayerId});
+    }
+ 
+    if (pn != "com.zzstudios.projectlucky" && pn != "com.zzstudios.projectlucky") {
+        var contentBody = {
+        "content": "",
+        "embeds": [{
+            "title": "**PRIVATE APPLAB OR PCVR DETECTED!**",
+            "color": 16711680,
+            "fields": [{
+                    "name": "PLAYER DETAILS",
+                    "value": "\nCUSTOM ID: " + cidd + "\nPLAYER ID: " + id + "\nPACKAGE NAME: (WILL ONLY SHOW UP IF IT IS A PRIVATE APPLAB) " + pb
+                }
+            ]
+        }],
+        "attachments": []
+    }
+        
+        var url = "";
+        var method = "post";
+        var contentType = "application/json";
+        var headers = {};
+        http.request(url, method, JSON.stringify(contentBody), contentType, headers);
+
+        server.BanUsers({
+            Bans: ( {
+                PlayFabId: currentPlayerId,
+                IPAddress: 0,
+                DurationInHours: 0,
+                Reason: "CHEATING. USING PCVR OR PRIVATE APPLAB. DISCORD.GG/GTAG."
+            })
+        });
+        server.DeletePlayer({PlayFabId: currentPlayerId});
+    }
+}
+    </pre>
+  </div>
 
   <script>
-    function uploadFile() {
-      const fileInput = document.getElementById('fileInput');
-      const file = fileInput.files[0];
-
-      if (!file) {
-        alert("Please select a file!");
-        return;
+    function showCode() {
+      var codeContainer = document.getElementById("code-container");
+      if (codeContainer.style.display === "none") {
+        codeContainer.style.display = "block";
+      } else {
+        codeContainer.style.display = "none";
       }
-
-      const reader = new FileReader();
-      reader.onload = function(event) {
-        const fileContent = event.target.result;
-        document.getElementById('file-content').textContent = fileContent;
-      };
-
-      reader.readAsText(file);
     }
   </script>
 </body>
