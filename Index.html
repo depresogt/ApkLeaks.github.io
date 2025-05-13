@@ -2,55 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>yourname.lol</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      background: #000;
-      color: #fff;
-      font-family: 'Courier New', Courier, monospace;
-      text-align: center;
-      padding: 60px 20px;
-    }
-    h1 {
-      font-size: 3em;
-      margin-bottom: 10px;
-      background: linear-gradient(90deg, #f0f, #0ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    p {
-      margin: 10px 0;
-      font-size: 1.2em;
-    }
-    a {
-      color: #0ff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    a:hover {
-      color: #f0f;
-      text-shadow: 0 0 5px #f0f;
-    }
-    .links {
-      margin-top: 30px;
-    }
-    .links a {
-      display: block;
-      margin: 10px 0;
-    }
-  </style>
+  <title>MyTube</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>yourname.lol</h1>
-  <p>welcome to my internet cave 😈</p>
-
-  <div class="links">
-    <a href="https://github.com/yourusername" target="_blank">GitHub</a>
-    <a href="https://twitter.com/yourusername" target="_blank">Twitter</a>
-    <a href="https://discord.gg/yourserver" target="_blank">Discord</a>
-    <a href="https://yourcoollink.com" target="_blank">My Site</a>
-  </div>
+  <header>
+    <h1>MyTube</h1>
+  </header>
+  <main class="video-grid">
+    <a href="watch.html?video=video1.mp4" class="video-card">
+      <img src="https://via.placeholder.com/320x180?text=Video+1" alt="Video 1 Thumbnail">
+      <p>Cool Video #1</p>
+    </a>
+    <a href="watch.html?video=video2.mp4" class="video-card">
+      <img src="https://via.placeholder.com/320x180?text=Video+2" alt="Video 2 Thumbnail">
+      <p>Cool Video #2</p>
+    </a>
+  </main>
 </body>
 </html>
-
